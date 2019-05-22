@@ -6,4 +6,4 @@
 
 ## 优秀实践
 
-* [Nats Streaming](./projects/nats-streaming.md)
+* [Nats Streaming](projects/nats-streaming.md)
