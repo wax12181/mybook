@@ -27,9 +27,15 @@ OpenTable，爱立信，HTC，西门子，VMware，Pivotal，GE和百度等公�
 
 #### 安装
 
-[使用docker安装](https://hub.docker.com/_/nats-streaming?tab=description)
+- [使用docker安装](https://hub.docker.com/_/nats-streaming?tab=description)
 
 #### server启动参数介绍
 
-|名称|配置文件|命令行|值范围|描述|
+* 基础属性设置
+
+|名称|说明|值范围|配置文件示例|命令行示例|
 |:-:|:-:|:-:|:-:|:-:|
+|cluster_id|集群名称|字符和下划线组合的字符串|cluster_id: "my_cluster_name"|-cid my_cluster_name|
+|discover_prefix|客户端发现服务器的主题前缀|NATS主题|discover_prefix: "_STAN.Discovery"|-|
+|store|存储类型|memory<br/>file<br/>sql|store: "file"|-st FILE|
+|dir|使用文件存储时，使用该属性设置根目录|文件目录|dir: "/path/to/storage"|-dir /path/to/storage|
