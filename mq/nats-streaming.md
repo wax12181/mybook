@@ -27,7 +27,13 @@ OpenTable，爱立信，HTC，西门子，VMware，Pivotal，GE和百度等公�
 
 #### 安装
 
-- [使用docker安装](https://hub.docker.com/_/nats-streaming?tab=description)
+- 使用docker安装
+
+```shell
+docker run -p 4223:4223 -p 8223:8223 nats-streaming -p 4223 -m 8223
+```
+
+详情可参考：[nats-streaming](https://hub.docker.com/_/nats-streaming?tab=description)
 
 #### server启动参数介绍
 
