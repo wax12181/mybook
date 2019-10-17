@@ -9,4 +9,5 @@
     * 编程语言
         * [java](pl/java.md)
         * [go](pl/go.md)
+        * [rust](pl/rust.md)
         * [python](pl/python.md)
