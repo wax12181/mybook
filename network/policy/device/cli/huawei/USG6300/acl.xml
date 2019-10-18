@@ -1,0 +1,107 @@
+<CLI>
+
+    <!--
+        华为防火墙存在acl和security-policy两种访问控制的功能，对于集中管理项目暂不涉及acl
+        从acl的CLI使用上同时支持一代和二代的设置，可以很明显的看出acl发展的过程
+    -->
+    <CREATE-ACL-V4>
+        system-view
+            acl number ${aclNumber}
+            <!--
+                aclNumber 说明
+                    INTEGER<2000-2999>  Specify the basic acl       
+                    INTEGER<3000-3999>  Specify the advanced ACL
+            -->
+
+            <!-- 支持集合对象设置 -->
+            rule ${ruleNumber} ${action?permit:deny} service-set ${serviceName} source address-set ${srcAddrName} destination address-set ${dstAddrName}
+            <!--
+                一条rule相当于一个安全策略，但不支持设置安全域
+                ruleNumber 说明
+                    INTEGER<0-4294967294>  Specify the ID of an ACL rule
+            -->
+
+            <!-- 直接指定值 -->
+            rule ${ruleNumber} ${action?permit:deny} ip source ${ipv6Address} destination ${ipv6Address}
+            rule ${ruleNumber} ${action?permit:deny} tcp source ${ipv6Address} destination ${ipv6Address} source-port range ${srcPortStart} ${srcPortEnd} destination-port range ${dstPortStart} ${dstPortEnd}
+            rule ${ruleNumber} ${action?permit:deny} udp source ${ipv6Address} destination ${ipv6Address} source-port range ${srcPortStart} ${srcPortEnd} destination-port range ${dstPortStart} ${dstPortEnd}
+            rule ${ruleNumber} ${action?permit:deny} icmp source ${ipv6Address} destination ${ipv6Address} icmp-type ${type} ${code}
+        quit
+    </CREATE-ACLV4>
+
+    <CREATE-ACL-V6>
+        system-view
+            acl ipv6 number ${aclNumber}
+            <!--
+                aclNumber 说明
+                    INTEGER<2000-2999>  Specify the basic acl       
+                    INTEGER<3000-3999>  Specify the advanced ACL
+            -->
+            rule ${ruleNumber} ${action?permit:deny} ipv6 source ${ipv6Address} destination ${ipv6Address}
+            rule ${ruleNumber} ${action?permit:deny} tcp source ${ipv6Address} destination ${ipv6Address} source-port range ${srcPortStart} ${srcPortEnd} destination-port range ${dstPortStart} ${dstPortEnd}
+            rule ${ruleNumber} ${action?permit:deny} udp source ${ipv6Address} destination ${ipv6Address} source-port range ${srcPortStart} ${srcPortEnd} destination-port range ${dstPortStart} ${dstPortEnd}
+            rule ${ruleNumber} ${action?permit:deny} icmpv6 source ${ipv6Address} destination ${ipv6Address} icmp6-type ${type} ${code}
+            <!--
+                不支持集合对象设置≠≠
+            -->
+        quit
+    </CREATE-ACL-V6>
+
+    <DELETE-ACL>
+        system-view
+            undo acl number ${aclNumber}
+            <!-- undo acl ipv6 number ${aclNumber} -->
+        quit
+    </DELETE-ACL>
+
+    <GET-ACL-BY-NAME>
+        display acl number ${aclNumber}
+        <!-- display acl ipv6 number ${aclNumber} -->
+        <!-- 返回结果
+        2019-10-13 20:18:19.230 +08:00
+        Basic ACL 2000, 4 rules ( Reference counter 0 ) 
+        Acl's step is 5
+        rule 5 permit source 3.3.3.3 0 (0 times matched) 
+        rule 10 permit source 2.2.2.2 0 (0 times matched) 
+        rule 15 permit source 1.2.5.0 0.0.0.255 (0 times matched) 
+        rule 20 permit source 3.4.4.0 0.0.0.255 (0 times matched) 
+        -->
+    </GET-ACL-BY-NAME>
+
+    <GET-ACL>
+        display acl all
+        <!-- display acl ipv6 all -->
+        <!-- 返回结果
+            2019-10-13 20:08:23.540 +08:00
+            Basic ACL 2000, 4 rules ( Reference counter 0 ) 
+            Acl's step is 5
+            rule 5 permit source 3.3.3.3 0 (0 times matched) 
+            rule 10 permit source 2.2.2.2 0 (0 times matched) 
+            rule 15 permit source 1.2.5.0 0.0.0.255 (0 times matched) 
+            rule 20 permit source 3.4.4.0 0.0.0.255 (0 times matched) 
+
+            Basic ACL 2001, 3 rules ( Reference counter 1 ) 
+            Acl's step is 5
+            rule 5 permit source 10.95.33.0 0.0.0.255 (402 times matched) 
+            rule 10 permit source 10.95.33.61 0 (0 times matched) 
+            rule 15 deny (43 times matched) 
+
+            Basic ACL 2002, 2 rules ( Reference counter 0 ) 
+            Acl's step is 5
+            rule 5 deny source 10.95.32.43 0 (0 times matched) 
+            rule 10 permit (0 times matched) 
+
+            Advanced ACL 3000, 1 rule ( Reference counter 1 ) 
+            "Acl for Quintuple Packet Capture"
+            Acl's step is 5
+            rule 0 permit ip destination 10.95.33.55 0 (226 times matched) 
+
+            Advanced ACL 3123, 0 rule ( Reference counter 0 ) 
+            Acl's step is 5
+
+            Advanced ACL 3777, 0 rule ( Reference counter 0 ) 
+            Acl's step is 5
+        -->
+    </GET-ACL>
+
+</CLI>

@@ -1,0 +1,38 @@
+<CLI>
+
+    <!-- Zone Object  -->
+
+    <CREATE-ZONE>
+        config terminal
+            zone ${name} ${layer?layer2:layer3}     <!-- layer2 表示二层物理口； layer3 表示三层路由口 -->
+                bind ${interfaceName}               <!-- STRING{1-31}  Interface name as ge1 ge1.1 ge1-1 vlan1 br1 ch1 ch1.1 ch1-1 tun1 vge1 -->
+            exit
+        exit
+    </CREATE-ZONE>
+
+    <DELETE-ZONE>
+        config terminal
+            no zone ${name}
+        exit
+    </DELETE-ZONE>
+
+    <GET-ZONE>
+        show zone
+        <!--
+            zone_name       zone_layer      refcount  zone_type port_list                       
+            trust           layer3          499       default   ge2 ge6 ge7 ge1 ge8             
+            untrust         layer3          241       default   ge3                             
+            dmz             layer3          5         default                                   
+            l2trust         layer2          1         default   ge4                             
+            l2untrust       layer2          1         default   ge5                             
+            l2-untrust      layer3          0         normal                                    
+            VPNHub          layer3          0         normal                                    
+            HA              layer3          0         normal                                    
+            trust_wxtk)yfq  layer3          0         normal                                    
+            etc             layer2          0         normal                                    
+            ssdaas          layer3          0         normal    vlan22                          
+            1               layer3          0         normal                                    
+        -->
+    </GET-ZONE>
+
+</CLI>

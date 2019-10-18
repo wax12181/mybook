@@ -1,0 +1,162 @@
+<CLI>
+
+    <!-- Service Object  -->
+
+    <CREATE-SERVICE>
+        config terminal
+            object service custom ${name}
+                service-item ${protocol?tcp:udp} src-port ${srcStart} ${srcEnd} dst-port ${dstStart} ${dstEnd}
+                service-item ${protocol?icmp:icmpv6} type ${type} min-code ${codeStart} max-code ${codeEnd}  <!-- 对应IPV4 和 IPV6 -->
+                service-item other protocol ${protocol}
+            exit
+        exit
+    </CREATE-SERVICE>
+
+    <DELETE-SERVICE>
+        config terminal
+            no object service custom ${name}
+        exit
+    </DELETE-SERVICE>
+
+    <GET-SERVICE-BY-NAME>
+        show object service custom ${name}
+        <!--
+            name: waxTest
+            service_items: TCP:9-13,44-999 UDP:3-8,30-40 ICMP:(3)8-8,ICMP:(3)8-9,ICMP:(3)8-11 ICMPv6:(100)0-0
+            description: 
+            reference: 0
+        -->
+    </GET-SERVICE-BY-NAME>
+
+    <GET-SERVICE>
+        show object service custom
+        <!--
+
+            Total: 569
+
+            name: 3389
+            service_items: TCP:11-333,44-55, TCP:11-11,33-33, TCP:23-23,43-44, TCP:23-44,44-44 UDP:22-22,33-33, UDP:22-33,33-33, UDP:5
+            5-55,33-44 OTHER:89, OTHER:33
+            description: ddddddddddd
+            reference: 2
+
+            name: chailiyao
+            service_items: TCP:1-65535,22-22 
+            description: 用于测试
+            reference: 6
+
+            name: fuwu
+            service_items: TCP:1-65535,80-80, TCP:80-80,1-65535, TCP:90-90,90-90, TCP:1-6000,1-6000 UDP:1-65535,80-80, UDP:80-80,1-655
+            35, UDP:1-6000,1-6000, UDP:90-90,90-90 OTHER:89
+            description: to_ceshimiaoshu
+            reference: 4
+
+            name: niewei_service
+            service_items: TCP:1-65535,80-80, TCP:1-6000,1-6000, TCP:80-80,1-65535, TCP:90-90,90-90 UDP:1-65535,80-80, UDP:1-6000,1-60
+            00, UDP:80-80,1-65535, UDP:90-90,90-90 OTHER:89
+            description: niewei_add_description_info
+            reference: 6
+        -->
+    </GET-SERVICE>
+
+    <GET-SERVICE-PREDEFINED>
+        show object service predefined
+        <!--
+
+            Total: 42
+
+            name: any
+            service_items: 
+            description: 所有服务。
+            reference: 27
+
+            name: AH
+            service_items: OTHER:51
+            description: IPsec 认证头协议。
+            reference: 2
+
+            name: DHCP
+            service_items: TCP:1-65535,67-68 UDP:1-65535,67-68 
+            description: 动态主机设置协议。
+            reference: 0
+
+            name: DHCPv6
+            service_items: TCP:1-65535,546-547 UDP:1-65535,546-547 
+            description: 动态主机设置协议版本6。
+            reference: 3
+
+            name: DNS
+            service_items: TCP:1-65535,53-53 UDP:1-65535,53-53 
+            description: 域名系统。
+            reference: 1
+        -->
+    </GET-SERVICE-PREDEFINED>
+
+
+    <!-- Service Group -->
+
+    <CREATE-SERVICE-GROUP>
+        config terminal
+            object service-group ${name}
+                service ${serviceName}                  <!-- NAME{1-63}  Service name -->
+                service-group ${serviceGroupName}       <!-- NAME{1-63}  Service group name -->
+            exit
+        exit
+    </CREATE-SERVICE-GROUP>
+
+    <DELETE-SERVICE-GROUP>
+        config terminal
+            no object service-group ${name}
+        exit
+    </DELETE-SERVICE-GROUP>
+
+    <GET-SERVICE-GROUP-BY-NAME>
+        show object service-group ${name}
+        <!--
+            name: waxTest-g2
+            service_options: waxTest
+            service_options_grp: waxTest-g1
+            description: 
+            reference: 0
+        -->
+    </GET-SERVICE-GROUP-BY-NAME>
+
+    <GET-SERVICE-GROUP>
+        show object service-group
+        <!--
+                        
+            Total: 23
+
+            name: yanfabu
+            service_options: 3389,chailiyao
+            service_options_grp: 
+            description: 
+            reference: 4
+
+            name: hunhe
+            service_options: SNMP,SNMPTRAP,SYSLOG,chailiyao
+            service_options_grp: 
+            description: 混合
+            reference: 1
+
+            name: fuwuzu01
+            service_options: chailiyao,fuwu
+            service_options_grp: 
+            description: t0_fuwuzumiaoshu
+            reference: 2
+
+            name: kongfuwuzu 1
+            service_options: kongfuwu 1,kongfuwu 2
+            service_options_grp: 
+            description: 
+            reference: 5
+
+            name: kongfuwuzu 2
+            service_options: 
+            service_options_grp: 
+            description: 
+            reference: 4
+        -->
+    </GET-SERVICE-GROUP>
+
+</CLI>

@@ -1,0 +1,99 @@
+<CLI>
+
+    <!-- IPV6 Address Object  -->
+
+    <CREATE-ADDRESS>
+        config terminal
+            object6 network address ${name}     <!-- range和network可以相互转换，二选一即可 -->
+                network-object6 range ${ipRange}     <!-- IPV4RANGE  IP range such as 1.1.1.1-2.2.2.2 -->
+                network-object6 network ${ipPrefix}     <!-- x:x:x::x/x  IPv6 address and prefix length-->
+            exit
+        exit
+    </CREATE-ADDRESS>
+
+    <DELETE-ADDRESS>
+        config terminal
+            no object6 network address ${name}
+        exit
+    </DELETE-ADDRESS>
+
+    <GET-ADDRESS-BY-NAME>
+        show object6 network address ${name}
+        <!--
+            name:  waxTest
+            ipaddr:  3:3:3:3:3:3:3:3/128,3::3/128,1::1-2::2,
+            exclude:  
+            description:  
+            reference:  2
+        -->
+    </GET-ADDRESS-BY-NAME>
+
+    <GET-ADDRESS>
+        show object6 network address
+        <!--
+
+            Total: 2
+
+            name:  any
+            ipaddr:  ::/0,
+            exclude:  
+            description:  
+            reference:  0
+
+            name:  waxTest
+            ipaddr:  3:3:3:3:3:3:3:3/128,3::3/128,1::1-2::2,
+            exclude:  
+            description:  
+            reference:  2
+        -->
+    </GET-ADDRESS>
+
+
+    <!-- IPV6 Address Group  -->
+
+    <CREATE-ADDRESS-GROUP>
+        config terminal
+            object6 network address-group ${name}         <!-- 不能与地址对象名称重复 -->
+                group-object6 address ${addressName}      <!-- NAME{1-63}  The address name -->
+                group-object6 group ${groupName}          <!-- NAME{1-63}  The address group name -->
+            exit
+        exit
+    </CREATE-ADDRESS-GROUP>
+
+    <DELETE-ADDRESS-GROUP>
+        config terminal
+            no object6 network address-group ${name}
+        exit
+    </DELETE-ADDRESS-GROUP>
+
+    <GET-ADDRESS-GROUP-BY-NAME>
+        show object6 network address-group ${name}
+        <!--
+            name:  waxTest-g2
+            obj_options:  waxTest
+            obj_options_grp:  waxTest-g1
+            description:  
+            reference:  0
+        -->
+    </GET-ADDRESS-GROUP-BY-NAME>
+
+    <GET-ADDRESS-GROUP>
+        show object6 network address-group
+        <!--
+            Total: 2
+
+            name:  waxTest-g1
+            obj_options:  waxTest
+            obj_options_grp:  
+            description:  
+            reference:  1
+
+            name:  waxTest-g2
+            obj_options:  waxTest
+            obj_options_grp:  waxTest-g1
+            description:  
+            reference:  0
+        -->
+    </GET-ADDRESS-GROUP>
+
+</CLI>

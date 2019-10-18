@@ -1,0 +1,39 @@
+<CLI>
+
+    <!--
+        TODO
+     -->
+
+    <CREATE-ADDRESS>
+        system-view
+            nat address-group ${name}
+                section ${startIp} ${endIp}
+                mode pcp
+                <!--    address 命令说明
+                    full-cone  Indicate the Fullone mode
+                    no-pat     Indicate the NOPAT mode
+                    pat        Indicate the Pat mode
+                    pcp        Indicate the PCP mode
+                -->
+            quit
+        quit
+    </CREATE-ADDRESS>
+
+    <DELETE-ADDRESS>
+        system-view
+            undo nat address-group ${name}
+        quit
+    </DELETE-ADDRESS>   
+
+    <GET-ADDRESS-BY-NAME>
+        <!-- -->
+    </GET-ADDRESS-BY-NAME>
+
+    <GET-ADDRESS>
+        display nat address-group
+        <!--
+            
+        -->
+    </GET-ADDRESS>
+
+</CLI>

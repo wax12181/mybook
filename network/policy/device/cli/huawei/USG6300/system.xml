@@ -1,0 +1,14 @@
+<CLI>
+
+    <SYSTEM-VERSION>
+        display version
+        <!--
+            2019-10-13 21:26:06.100 +08:00
+            Huawei Versatile Routing Platform Software
+            VRP (R) Software, Version 5.170 (USG6300 V500R001C60SPC500)
+            Copyright (C) 2014-2018 Huawei Technologies Co., Ltd.
+            USG6320 uptime is 27 weeks, 2 days, 19 hours, 35 minutes 
+        -->
+    </SYSTEM-VERSION>
+
+</CLI>

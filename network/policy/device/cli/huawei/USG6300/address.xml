@@ -1,0 +1,137 @@
+<CLI>
+
+    <!-- 一个地址对象中 能同时支持链路层的MAC地址、网络层的IPV4和IPV6 -->
+
+    <CREATE-ADDRESS>
+        system-view
+            ip address-set ${name} type object      <!-- 地址对象和地址组名称不能重复 -->
+                address ${ipv4} mask ${maskLen}
+                address ${ipv6} ${prefix}
+                address range ${start} ${end}
+                <!--    address 命令说明
+                    H-H-H            Specify the MAC address
+                    INTEGER<0-4095>  Specify the ID of the address set
+                    STRING<11-17>    Specify the MAC addresses type of XX:XX:XX:XX:XX:XX or
+                                    XX-XX-XX-XX-XX-XX 
+                    X.X.X.X          Specify the address of the address set
+                    X:X::X:X         Specify an IPv6 address 
+                    range            Specify an address range                   
+                -->
+            quit
+        quit
+    </CREATE-ADDRESS>
+
+    <DELETE-ADDRESS>
+        system-view
+            undo ip address-set ${name}
+        quit
+    </DELETE-ADDRESS>   
+
+    <GET-ADDRESS-BY-NAME>
+        <!-- 未找到 -->
+    </GET-ADDRESS-BY-NAME>
+
+    <GET-ADDRESS>
+        display ip address-set type object
+        <!--
+            2019-10-13 23:15:33.800 +08:00
+            Object address-set maximum number(s): 1024
+            Object address-set total number(s): 550
+            Object address-set item total number(s): 971
+            Object address-set reference total number(s): 599
+            Address-set: CMSS_Operation
+            Type: object
+            Item number(s): 282
+            Reference number(s): 1
+            Item(s):
+            address 0 range 10.254.1.1 10.254.1.57 
+            address 1 range 10.254.2.1 10.254.2.60 
+            address 2 10.254.2.107 0 
+            address 3 range 10.254.3.1 10.254.3.57 
+            address 4 10.254.3.61 0 
+            address 5 10.254.3.62 0 
+            address 6 10.254.3.63 0 
+            address 7 10.254.3.64 0 
+            address 8 10.254.3.65 0 
+            address 9 10.254.3.66 0 
+            address 10 10.254.3.67 0 
+            address 11 10.254.3.69 0 
+            address 12 10.254.3.70 0 
+            address 13 10.254.3.74 0 
+            address 14 10.254.3.79 0 
+            address 15 10.254.3.80 0 
+            address 16 10.254.3.82 0 
+            address 17 10.254.3.83 0 
+            address 18 10.254.3.84 0 
+            address 19 10.254.3.85 0 
+            address 20 10.254.3.86 0
+        -->
+    </GET-ADDRESS>
+
+
+    <CREATE-ADDRESS-GROUP>
+        system-view
+            ip address-set ${name} type group   <!-- 地址对象和地址组名称不能重复 -->
+                address address-set ${addressName}
+                <!-- address 命令说明
+                    H-H-H            Specify the MAC address
+                    INTEGER<0-4095>  Specify the ID of the address set
+                    STRING<11-17>    Specify the MAC addresses type of XX:XX:XX:XX:XX:XX or
+                                    XX-XX-XX-XX-XX-XX 
+                    X.X.X.X          Specify the address of the address set
+                    X:X::X:X         Specify an IPv6 address 
+                    address-set      Indicate address set status and configuration information
+                    range            Specify an address range
+                -->
+            quit
+        quit
+    </CREATE-ADDRESS-GROUP>
+
+    <DELETE-ADDRESS-GROUP>
+        system-view
+            undo ip address-set ${name}
+        quit
+    </DELETE-ADDRESS-GROUP>
+
+    <GET-ADDRESS-GROUP-BY-NAME>
+        <!-- 未找到 -->
+    </GET-ADDRESS-GROUP-BY-NAME>   
+
+    <GET-ADDRESS-GROUP>
+        display ip address-set type group
+        <!--
+            2019-10-13 23:29:51.820 +08:00
+            Group address-set maximum number(s): 128
+            Group address-set total number(s): 32
+            Group address-set item total number(s): 81
+            Group address-set reference total number(s): 15
+            Address-set: yanfazu
+            Type: group
+            Description: ����
+            Item number(s): 3
+            Reference number(s): 5
+            Item(s):
+            address 0 address-set trust_wxtk_mgm_to_internet 
+            address 1 3.3.3.0 0.0.0.255 
+            address 2 1.2.2.2 0 
+            Address-set: xiaofeizu100
+            Type: group
+            Item number(s): 3
+            Reference number(s): 3
+            Item(s):
+            address 0 address-set xiaofei20 
+            address 1 address-set xiaofei10 
+            address 2 address-set yanfazu 
+            Address-set: group
+            Type: group
+            Description: qiyh_dizhidu_test
+            Item number(s): 4
+            Reference number(s): 1
+            Item(s):
+            address 0 range 1.2.3.4 1.2.3.5 
+            address 1 address-set trust_wxtk_mgm_10.144.73.80 
+            address 2 address-set trust_wxtk_mgm_10.144.69.250
+        -->
+    </GET-ADDRESS-GROUP>
+
+</CLI>

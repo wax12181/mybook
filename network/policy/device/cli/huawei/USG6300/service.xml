@@ -1,0 +1,132 @@
+<CLI>
+
+    <!-- 一个地址对象中 能同时支持链路层的MAC地址、网络层的IPV4和IPV6 -->
+
+    <CREATE-SERVICE>
+        system-view
+            ip service-set ${name} type object      <!-- 地址对象和地址组名称不能重复 -->
+
+                <!-- 所有IP层以上协议号 -->
+                service protocol ${protocolNumber} 
+                <!--   protocol 说明
+                    <0-255>  Specify the protocol number
+                    icmp     Internet Control Message Protocol (1)
+                    icmpv6   Internet Control Message Protocol 6 (58)
+                    sctp     Stream Control Transmission Protocol (132)
+                    tcp      Transmission Control Protocol (6)
+                    udp      User Datagram Protocol (17)
+                -->
+
+                <!-- icmp -->
+                service protocol ${protocolNumber} icmp-type ${type} ${code}
+                <!-- eg
+                   service protocol 1 icmp-type 4 0
+                   service protocol 58 icmp-type 4 0
+                -->
+
+                <!-- 传输层协议 -->
+                service protocol ${protocolNumber} source-port ${srcPortStart} to ${srcPortEnd} destination-port ${dstPortStart} to ${dstPortEnd}
+                <!-- eg
+                    service protocol 6 source-port 1 to 3 destination-port 5 to 8    
+                    service protocol 17 source-port 1 to 3 destination-port 5 to 8    
+                    service protocol 132 source-port 1 to 3 destination-port 5 to 8    
+                -->
+
+            quit
+        quit
+    </CREATE-SERVICE>
+
+    <DELETE-SERVICE>
+        system-view
+            undo ip service-set ${name}
+        quit
+    </DELETE-SERVICE>   
+
+    <GET-SERVICE-BY-NAME>
+        <!-- 未找到 -->
+    </GET-SERVICE-BY-NAME>
+
+    <GET-SERVICE>
+        display ip service-set type object
+        <!--
+            2019-10-14 00:39:07.140 +08:00
+            Object service-set maximum number(s): 1024
+            Object service-set total number(s): 475
+            Object service-set item total number(s): 638
+            Object service-set reference total number(s): 532
+            Service-set Name: 1 
+            Type: object 
+            Item number(s): 1
+            Reference number(s): 1
+            Item(s):
+            service 0 protocol tcp source-port 1 to 65535 destination-port 1001 to 1200 
+
+            Service-set Name: 10 
+            Type: object 
+            Item number(s): 1
+            Reference number(s): 1
+            Item(s):
+            service 0 protocol tcp source-port 1 to 65535 destination-port 1001 to 1200 
+
+            Service-set Name: 100 
+            Type: object 
+            Item number(s): 1
+            Reference number(s): 1
+            Item(s):
+            service 0 protocol tcp source-port 1 to 65535 destination-port 1001 to 1200 
+        -->
+    </GET-SERVICE>
+
+
+    <CREATE-SERVICE-GROUP>
+        system-view
+            ip service-set ${name} type group   <!-- 服务对象和服务组名称不能重复 -->
+                service service-set ${serviceName}
+            quit
+        quit
+    </CREATE-SERVICE-GROUP>
+
+    <DELETE-SERVICE-GROUP>
+        system-view
+            undo ip service-set ${name}
+        quit
+    </DELETE-SERVICE-GROUP>
+
+    <GET-SERVICE-GROUP-BY-NAME>
+        <!-- 未找到 -->
+    </GET-SERVICE-GROUP-BY-NAME>   
+
+    <GET-SERVICE-GROUP>
+        display ip service-set type group
+        <!--
+            2019-10-14 00:44:59.140 +08:00
+            Group service-set maximum number(s): 64
+            Group service-set total number(s): 37
+            Group service-set item total number(s): 270
+            Group service-set reference total number(s): 31
+            Service-set Name: 20.21.69.161.ICMP 
+            Type: group 
+            Item number(s): 3
+            Reference number(s): 0
+            Item(s):
+            service 0 service-set 20,21 
+            service 1 service-set 69,161 
+            service 2 service-set icmp 
+
+            Service-set Name: 53,, 
+            Type: group 
+            Item number(s): 1
+            Reference number(s): 0
+            Item(s):
+            service 0 service-set 53 
+
+            Service-set Name: 53,,,69 
+            Type: group 
+            Item number(s): 1
+            Reference number(s): 0
+            Item(s):
+            service 0 service-set 53.69 
+        -->
+    </GET-SERVICE-GROUP>
+
+</CLI>

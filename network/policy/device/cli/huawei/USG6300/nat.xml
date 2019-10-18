@@ -1,0 +1,59 @@
+<CLI>
+
+    <!-- 
+
+     -->
+
+    <CREATE-NAT>
+        system-view
+            nat-policy ${name}
+                rule name ${name}
+                    source-zone ${srcZoneName}
+                    destination-zone ${dstZoneName}
+                    source-address address-set ${srcAddressName}
+                    destination-address address-set ${dstAddressName}
+                    action nat address-group ${natAddressGroupName}
+                    action nat easy-ip
+                    <!-- nat 设置说明
+                        address-group   Indicate the action is address-group
+                        easy-ip         Indicate the action is easy-ip
+                        static-mapping  Indicate the action is static mapping
+                    -->
+                quit
+            quit
+        quit
+    </CREATE-NAT>
+
+    <DELETE-NAT>
+        system-view
+            undo nat-policy rule name ${name}
+        quit
+    </DELETE-NAT>   
+
+    <GET-NAT-BY-NAME>
+        display nat-policy rule name ${name}
+        <!--
+            2019-10-18 09:22:04.540 +08:00
+            (0 times matched)
+            rule name waxTest
+            source-zone trust
+            destination-zone trust
+            source-address address-set 1
+            destination-address address-set 3
+            action nat address-group waxTest
+        -->
+    </GET-NAT-BY-NAME>
+
+    <GET-NAT>
+        display nat-policy rule all
+        <!--
+            2019-10-18 09:23:03.240 +08:00 
+            Total:3 
+            RULE ID  RULE NAME                         STATE      ACTION       HITS        
+            1        GuideNat1514284337253             enable     nat          75776132     
+            2        waxTest                           enable     nat          0           
+            0        default                           enable     no-nat       2955787     
+        -->
+    </GET-NAT>
+
+</CLI>

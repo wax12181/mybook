@@ -1,0 +1,70 @@
+<CLI>
+
+    <!-- 一个地址对象中 能同时支持链路层的MAC地址、网络层的IPV4和IPV6 -->
+
+    <CREATE-ZONE>
+        system-view
+            firewall zone name ${name}
+                set priority ${priority}            <!-- 必选项，否则无法使用; 格式：INTEGER<1-100>  Value of security zone priority -->
+                add interface ${type} ${number}     <!-- 可以合并成名称，但需要调整格式-->
+                <!-- 
+                type 格式：
+                    Cellular         Cellular interface
+                    Eth-Trunk        Ethernet-Trunk interface
+                    GigabitEthernet  GigabitEthernet interface
+                    Tunnel           Tunnel interface
+                    Virtual-if       Virtual interface
+                    Vlanif           Vlan interface   
+                number 格式：
+                    INTEGER/INTEGER...  Slot number
+                    INTEGET             number
+                -->
+        quit
+    </CREATE-ZONE>
+
+    <DELETE-ZONE>
+        system-view
+            undo firewall zone name ${name}
+            <!-- 存在确认是否执行的交互 -->
+        quit
+    </DELETE-ZONE>  
+
+    <GET-ZONE-BY-NAME>
+        <!-- 未找到 -->
+    </GET-ZONE-BY-NAME> 
+
+    <GET-ZONE>
+        display zone
+        <!--
+            2019-10-14 00:05:05.730 +08:00
+            local
+            priority is 100
+            interface of the zone is (0):
+            #
+            trust
+            description .....__ShenHua4AQuan_XianGuan.LiPingTai_mailadd������Դ����ƽ̨
+            priority is 85
+            interface of the zone is (5):
+                GigabitEthernet0/0/0
+                Vlanif1
+                GigabitEthernet0/0/2
+                GigabitEthernet0/0/4
+                GigabitEthernet0/0/3
+            #
+            untrust
+            description test555
+            priority is 5
+            interface of the zone is (3):
+                Virtual-if0
+                GigabitEthernet0/0/1
+                GigabitEthernet0/0/5
+            #
+            dmz
+            description test1000
+            priority is 50
+            interface of the zone is (1):
+                GigabitEthernet0/0/7
+        -->
+    </GET-ZONE>
+
+</CLI>

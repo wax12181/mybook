@@ -1,0 +1,81 @@
+<CLI>
+
+    <!-- 华为墙的安全策略对于IPV4和IPV6进行了兼容，将这种差异都放在了地址对象和服务对象中消化 -->
+
+    <CREATE-SECURITY-POLICY>
+        system-view
+            security-policy
+                rule name ${name}
+                    source-zone ${zoneName}
+                    destination-zone ${zoneName}
+                    source-address ${addressName}
+                    destination-address ${addressName}
+                    service ${serviceName}
+                    action ${action?deny:permit}
+                quit
+            quit
+        quit
+    </CREATE-SECURITY-POLICY>
+
+    <DELETE-SECURITY-POLICY>
+        system-view
+            security-policy
+                undo rule name ${name}
+            quit
+        quit
+    </DELETE-SECURITY-POLICY>
+
+    <GET-SECURITY-POLICY-BY-NAME>
+        display security-policy rule name ${name}
+        <!-- 返回结果
+            2019-10-14 01:57:43.380 +08:00
+            (5234141 times matched)
+            rule name policy_for_las_tcp
+            policy logging
+            source-address address-set 100.7.1.1-100.7.1.100
+            destination-address address-set 100.6.2.2
+            service ALL_TCP
+            action permit
+        -->
+    </GET-SECURITY-POLICY-BY-NAME>
+
+    <GET-SECURITY-POLICY>
+        display security-policy rule all
+        <!-- 返回结果
+            2019-10-13 22:12:05.180 +08:00 
+            Total:319 
+            RULE ID  RULE NAME                         STATE      ACTION       HITS        
+
+            377      policy_for_las_icmp_topsec        enable     permit       0            
+            376      policy_for_las_tcp_topsec         enable     permit       5273608      
+            375      policy_for_las_udp_topsec         enable     permit       5263454      
+            264      policy_for_las_udp                enable     permit       5263454      
+            265      policy_for_icmp                   enable     permit       5283851      
+            263      policy_for_las_tcp                enable     permit       5220766      
+            60       fengxianzu4                       enable     permit       0            
+            61       fengxianzu5                       enable     permit       0            
+            62       fengxianzu6                       enable     permit       0            
+            63       fengxianzu7                       enable     permit       0            
+            64       R09                               enable     permit       0            
+            66       fengxianzu9                       enable     permit       0            
+            67       fengxianzu10                      enable     permit       0            
+            68       fengxianzu11                      enable     permit       0            
+            69       fengxianzu12                      enable     permit       0            
+            70       fengxianzu13                      enable     permit       0            
+            71       fengxianzu14                      enable     permit       0            
+            72       fengxianzu15                      enable     permit       0            
+            73       fengxianzu16                      enable     permit       0            
+            74       fengxianzu17                      enable     permit       0            
+            75       fengxianzu18                      enable     permit       0            
+            76       zyztest                           enable     permit       0            
+            77       712                               enable     permit       0            
+            79       fengxianfilter1                   enable     deny         0            
+            80       fengxianfilter2                   enable     -            0            
+            81       fengxianfilter3                   disable    permit       0            
+            82       fengxianfilter4                   enable     permit       0            
+            83       fengxianfilter5                   enable     permit       0            
+            84       fengxianfilter6                   enable     permit       0
+        -->
+    </GET-SECURITY-POLICY>
+
+</CLI>
