@@ -19,14 +19,14 @@
 
                 <!-- icmp -->
                 service protocol ${protocolNumber} icmp-type ${type} ${code}
-                <!-- eg
+                <!-- 举例
                    service protocol 1 icmp-type 4 0
                    service protocol 58 icmp-type 4 0
                 -->
 
                 <!-- 传输层协议 -->
                 service protocol ${protocolNumber} source-port ${srcPortStart} to ${srcPortEnd} destination-port ${dstPortStart} to ${dstPortEnd}
-                <!-- eg
+                <!-- 举例
                     service protocol 6 source-port 1 to 3 destination-port 5 to 8    
                     service protocol 17 source-port 1 to 3 destination-port 5 to 8    
                     service protocol 132 source-port 1 to 3 destination-port 5 to 8    

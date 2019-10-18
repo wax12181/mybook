@@ -71,37 +71,6 @@
     <GET-ACL>
         display acl all
         <!-- display acl ipv6 all -->
-        <!-- 返回结果
-            2019-10-13 20:08:23.540 +08:00
-            Basic ACL 2000, 4 rules ( Reference counter 0 ) 
-            Acl's step is 5
-            rule 5 permit source 3.3.3.3 0 (0 times matched) 
-            rule 10 permit source 2.2.2.2 0 (0 times matched) 
-            rule 15 permit source 1.2.5.0 0.0.0.255 (0 times matched) 
-            rule 20 permit source 3.4.4.0 0.0.0.255 (0 times matched) 
-
-            Basic ACL 2001, 3 rules ( Reference counter 1 ) 
-            Acl's step is 5
-            rule 5 permit source 10.95.33.0 0.0.0.255 (402 times matched) 
-            rule 10 permit source 10.95.33.61 0 (0 times matched) 
-            rule 15 deny (43 times matched) 
-
-            Basic ACL 2002, 2 rules ( Reference counter 0 ) 
-            Acl's step is 5
-            rule 5 deny source 10.95.32.43 0 (0 times matched) 
-            rule 10 permit (0 times matched) 
-
-            Advanced ACL 3000, 1 rule ( Reference counter 1 ) 
-            "Acl for Quintuple Packet Capture"
-            Acl's step is 5
-            rule 0 permit ip destination 10.95.33.55 0 (226 times matched) 
-
-            Advanced ACL 3123, 0 rule ( Reference counter 0 ) 
-            Acl's step is 5
-
-            Advanced ACL 3777, 0 rule ( Reference counter 0 ) 
-            Acl's step is 5
-        -->
     </GET-ACL>
 
 </CLI>

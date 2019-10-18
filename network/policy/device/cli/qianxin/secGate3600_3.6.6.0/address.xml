@@ -30,39 +30,6 @@
 
     <GET-ADDRESS>
         show object network address
-        <!--
-            Total: 442
-
-            name:  any
-            ipaddr:  0.0.0.0/0
-            exclude:  
-            description:  
-            reference:  17
-
-            name:  abc
-            ipaddr:  10.1.1.0/24,192.168.1.1/32,1.1.1.22-1.1.1.33,2.2.2.2
-            exclude:  1.1.1.1/32,2.2.2.0/24,3.3.3.22-3.3.3.33,23.23.23.23
-            description:  jjjjjj
-            reference:  6
-
-            name:  zhuyanxiao
-            ipaddr:  1.2.1.0/24,2.2.2.2-2.2.2.33
-            exclude:  
-            description:  
-            reference:  5
-
-            name:  chailiyao
-            ipaddr:  4.4.4.4
-            exclude:  
-            description:  
-            reference:  9
-
-            name:  zhuyanxia
-            ipaddr:  1.1.1.1/32,1.2.2.0/24,192.168.1.0/24,1.2.1.2-1.2.1.24
-            exclude:  1.2.1.0/24,10.0.0.0/23,1.1.1.1-1.1.1.10,1.1.1.1
-            description:  to_添加描述
-            reference:  5
-        -->
     </GET-ADDRESS>
 
     <!-- IPV4 Address Group  -->
@@ -95,46 +62,6 @@
 
     <GET-ADDRESS-GROUP>
         show object network address-group
-        <!--
-
-            Total: 20
-
-            name:  kongdizhizu 1
-            obj_options:  kongdizhi,kongdizhi 2
-            obj_options_grp:  
-            description:  xiaofei test use
-            reference:  3
-
-            name:  kongdizhizu 2
-            obj_options:  
-            obj_options_grp:  
-            description:  xiaofei test use
-            reference:  4
-
-            name:  yanfabu
-            obj_options:  zhuyanxiao,chailiyao
-            obj_options_grp:  
-            description:  
-            reference:  1
-
-            name:  yanfazu
-            obj_options:  chailiyao,zhuyanxia
-            obj_options_grp:  
-            description:  to_tianjiamiaoshu
-            reference:  1
-
-            name:  niewei_group
-            obj_options:  chailiyao,zhuyanxia,niewei
-            obj_options_grp:  
-            description:  降云研发
-            reference:  0
-
-            name:  niewie_add_group
-            obj_options:  
-            obj_options_grp:  
-            description:  niewie_add_group
-            reference:  0
-        -->
     </GET-ADDRESS-GROUP>
 
 </CLI>

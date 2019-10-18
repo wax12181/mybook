@@ -56,29 +56,6 @@
 
     <GET-SECURITY-POLCIY>
         show security policy
-        <!-- 返回结果
-            name      sip          szone   dip          dzone   service  action type   application    state   hit num   
-            policy_robot_1address_robot_1trust   address_robot_2trust   service_robot_1deny   ipv4   any            enable  0         
-            policy_robot_1097address_robot_1562trust   address_robot_1563trust   TELNET   deny   ipv4   any            enable  0         
-            policy_robot_1096address_robot_1562trust   address_robot_1563trust   TELNET   permit ipv4   any            enable  0         
-            policy_robot_1095address_robot_1562trust   address_robot_1563trust   TELNET   deny   ipv4   any            enable  0         
-            allown    any          trust   any          trust   any      permit ipv4   any            enable  42001527  
-            222       100.6.3.2    trust   100.6.1.1    trust   any      permit ipv4   any            enable  0         
-            trust-trust100.6.1.1    trust   100.6.3.2    trust   any      permit ipv4   any            enable  0         
-            1111      any          any     any          any     any      permit ipv4   any            enable  1215      
-            H3C到锐捷any          trust   any          untrust any      permit ipv4   any            enable  0         
-            101dao22  100.7.101.1  untrust 100.7.22.1   trust   any      deny   ipv4   any            disable 0         
-            chaliyao  abc          any     zhuyanxiao   any     any      deny   ipv4   any            disable 0         
-            zhuyanxia yanfabu      untrust any          trust   ldap     permit ipv4   any            disable 0         
-            用于测试zhuyanxiao   l2trust any          l2untrustchailiyaopermit ipv4   京东商城   disable 0         
-            duoge     chailiyao    trust   zhuyanxia    untrust DHCPv6   permit ipv4   any            disable 0         
-            xiaofei test rongyu A11.1.20.1     untrust 2.2.20.1-5   untrust tcp/51000deny   ipv4   any            disable 0         
-            xiaofei test rongyu A21.1.20.1     untrust 2.2.20.1-10  untrust tcp/51000permit ipv4   any            enable  0         
-            xiaofei test rongyu A31.1.20.1     untrust 2.2.20.1-15  untrust tcp/51000deny   ipv4   any            enable  0         
-            xiaofei test rongyu B11.1.20.1-5   untrust 2.2.20.1     untrust tcp/51001deny   ipv4   any            enable  0         
-            xiaofei test rongyu B21.1.20.4-15  untrust 2.2.20.1     untrust tcp/51001permit ipv4   any            enable  0         
-            xiaofei test rongyu B31.1.20.1-20  untrust 2.2.20.1     untrust tcp/51001deny   ipv4   any            enable  0    
-        -->
     </GET-SECURITY-POLCIY>
 
 </CLI>

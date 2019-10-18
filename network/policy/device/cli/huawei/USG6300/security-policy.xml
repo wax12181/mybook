@@ -30,7 +30,7 @@
         <!-- 返回结果
             2019-10-14 01:57:43.380 +08:00
             (5234141 times matched)
-            rule name policy_for_las_tcp
+            rule name waxTest
             policy logging
             source-address address-set 100.7.1.1-100.7.1.100
             destination-address address-set 100.6.2.2
