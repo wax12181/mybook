@@ -3,8 +3,8 @@
 * [向导](README.md)
     * 计算机网络知识
         * 防火墙
-            * [ACL](network/protocol/ssh.md)
-            * [NAT](network/protocol/ssh.md)
+            * [ACL](network/policy/acl.md)
+            * [NAT](network/policy/nat.md)
         * 通信协议
             * [SSH](network/protocol/ssh.md)
     * MQ
