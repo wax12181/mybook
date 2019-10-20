@@ -2,6 +2,56 @@
 
 ## 环境搭建
 
+1. [rust安装指南](https://www.rust-lang.org/zh-CN/tools/install)
+
+2. 使用USTC(中科大镜像源)，加速rust安装
+
+    ```shell
+    export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+    ```
+
+3. rust发布版本，使用rustup进行管理
+
+    - Nightly
+    - Beta
+    - Stable
+
+    Nightly 版本指的是每天更新一次。每隔六周，Nightly 版本会晋升为 “Beta” 版。在这一点上，它只会收到补丁修复严重错误。六周后，Beta 版提升为 “Stable” 版，并成为下一个 1. x 版本。
+
+    这个过程是平行地发生的。所以每隔六周的同一天，Nightly 变成 Beta，Beta 变成 Stable。当 1.x 版本发布时，与此同时，1.(x + 1)-beta 也被发布，Nightly 版本变成第一个 1.(x + 2)-nightly 版。
+
+    一般来说，除非你有一个特别的原因，你应该使用stable 发行版。这些版本是针对大众的。
+
+    然而，Rust 中那取决于你的兴趣，你可以选择使用nightly 版本。基本的权衡是这样的：在 nightly 通道中，您可以使用不稳定，新的 Rust 特性。然而，不稳定的特性易于改变，所以新的 nightly 版本发布时可能会破坏你的代码。如果你使用 stable 版本，你不能使用实验特性，但 Rust 的下一版本重大的变化不会造成严重的问题。
+
+4. 使用USTC加速rust crates镜像
+
+    - 在 $HOME/.cargo/config 中添加如下内容
+
+    ```content
+    [registry]
+    index = "git://mirrors.ustc.edu.cn/crates.io-index"
+    ```
+
+    如果所处的环境中不允许使用 git 协议, 可以把上述地址改为
+
+    ```content
+    index = "http://mirrors.ustc.edu.cn/crates.io-index"
+    ```
+
+    同步频率为每两个小时更新一次.
+
+    - 如果 cargo 版本为 0.13.0 或以上, 需要更改 $HOME/.cargo/config 为以下内容:
+
+    ```content
+    [source.crates-io]
+    registry = "https://github.com/rust-lang/crates.io-index"
+    replace-with = 'ustc'
+    [source.ustc]
+    registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+    ```
+
 ## 项目管理
 
 rust自带非常好用的项目管理工具Cargo
@@ -12,10 +62,14 @@ rust自带非常好用的项目管理工具Cargo
     cargo new rust-sample
     ```
 
-项目的目录结构
+- 项目的目录结构
 
     ```content
-        
+    ├── Cargo.toml
+    ├── src
+    |   └── main.rs
+    └── tests
+        └── test.rs
     ```
 
 ## 测试
