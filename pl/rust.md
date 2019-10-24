@@ -72,6 +72,44 @@ rust自带非常好用的项目管理工具Cargo
         └── test.rs
     ```
 
+- 依赖管理
+
+1. rust使用Cargo管理依赖，在Cargo.toml中设置
+
+    ```toml
+    [dependencies]
+    #依赖本地，适用于依赖项在项目内
+    hyper-utls = { path = "../hyper-utls" }
+    # 依赖git仓库，适用于依赖项在项目外
+    hyper-utls= { git = "${仓库URL地址}", branch = "master" }
+    # 依赖crates-io库中二进制文件
+    hyper-utls=1.0.0
+
+    [patch.crates-io]
+    #调试本地依赖项代码变更时使用，可以覆盖dependencies中的依赖
+    hyper-utls = { path = "../hyper-utls" }
+    # 调试非本地依赖项代码变更时使用，可以覆盖dependencies中的依赖
+    hyper-utls= { git = "${仓库URL地址}", branch = "master" }
+    ```
+
+    注意事项
+
+    - 使用SSH方式进行git仓库依赖设置，需要在本地开发环境下配置SSH
+        1. 添加`~/.ssh/config`，并写入如下内容
+
+            ```context
+            Host *
+                UseKeychain yes
+                AddKeysToAgent yes
+                IdentityFile ~/.ssh/id_rsa
+            ```
+
+        2. 指定私钥文件
+
+            ```shell
+            ssh-add -K ~/.ssh/id_rsa
+            ```
+
 ## 测试
 
 ### 单元测试
