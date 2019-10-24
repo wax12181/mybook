@@ -95,20 +95,21 @@ rust自带非常好用的项目管理工具Cargo
     注意事项
 
     - 使用SSH方式进行git仓库依赖设置，需要在本地开发环境下配置SSH
+
         1. 添加`~/.ssh/config`，并写入如下内容
 
-            ```context
-            Host *
-                UseKeychain yes
-                AddKeysToAgent yes
-                IdentityFile ~/.ssh/id_rsa
-            ```
+        ```context
+        Host *
+            UseKeychain yes
+            AddKeysToAgent yes
+            IdentityFile ~/.ssh/id_rsa
+        ```
 
         2. 指定私钥文件
 
-            ```shell
-            ssh-add -K ~/.ssh/id_rsa
-            ```
+        ```shell
+        ssh-add -K ~/.ssh/id_rsa
+        ```
 
 ## 测试
 
