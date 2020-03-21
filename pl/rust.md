@@ -108,7 +108,8 @@ rust自带非常好用的项目管理工具Cargo
         2. 指定私钥文件
 
         ```shell
-        ssh-add -K ~/.ssh/id_rsa
+        ssh-agent bash
+        ssh-add -k ~/.ssh/id_rsa
         ```
 
 ## 测试
