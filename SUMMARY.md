@@ -15,3 +15,5 @@
         * [go](pl/go.md)
         * [rust](pl/rust.md)
         * [python](pl/python.md)
+    * CICD
+        * [jenkins](cicd/jenkins.md)
