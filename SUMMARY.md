@@ -8,7 +8,7 @@
         * 通信协议
             * [SSH](network/protocol/ssh.md)
     * SDN
-        * [ODL](cicd/odl.md)
+        * [ODL](sdn/odl.md)
     * 微服务
         * [Spring Cloud & Kubernetes](microservice/kubernetes.md)
     * MQ
