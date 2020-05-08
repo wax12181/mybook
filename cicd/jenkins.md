@@ -7,7 +7,7 @@
     - 在 macOS 和 Linux 系统上
 
         ```shell
-        docker run \
+        docker run -d --name jenkins\
         --rm \
         -u root \
         -p 8080:8080 \
@@ -20,7 +20,7 @@
     - 在Windows系统上
 
         ```shell
-        docker run ^
+        docker run  -d --name jenkins ^
         --rm ^
         -u root ^
         -p 8080:8080 ^

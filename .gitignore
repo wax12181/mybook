@@ -1,2 +1,6 @@
+#GITBOOK
 node_modules
 _book
+
+#IDE
+.vscode
